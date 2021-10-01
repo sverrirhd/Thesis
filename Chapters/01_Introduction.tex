@@ -1,6 +1,6 @@
 \chapter{Introduction}
 
-\section{1.1	Urban drainage forecasts and related concepts}
+\section{Urban drainage forecasts and related concepts}
 Urban drainage systems are an integral part of a city’s infrastructure and are supposed to effectively manage sewage and stormwater runoff. These systems generally fall into two categories, depending on weather they handle runoff and sewage together or separately. A failure to do both can result in flooding, property loss, increased risk of disease and can pose a risk to other infrastructure such as domestic water sources. (Stewart, 2003) There are many operational strategies for urban drainage systems that require or would benefit greatly from having a good forecast. (Thorndahl et al., 2017) Since the flow of wastewater is a relatively constant factor in the total urban drainage flow, the main cause for concern the stormwater runoff. It is therefore of great interest in the field of urban drainage systems to be able to translate precipitation forecasts into drainage flow forecasts.\\
 There are two primary parts to consider for a quality drainage forecast: the precipitation forecast itself, and the model that translates a precipitation forecast into a drainage flow forecast, also called a rainfall-runoff model. Precipitation forecasts considered for urban hydrological purposes are usually made with either numerical weather predictions (NWP) or radar nowcasts. The former has a considerably lower spatial and temporal resolution but a considerably larger forecast horizon than the latter. Radar nowcasts are therefore often considered the better choice for applications such as real-time control, which require at most very short-term but precise forecasts. Although, as (Pedersen, 2021) notes, the better option of the two is going to depend on application in question and it’s temporal and spatial scale. \\
 Rainfall-runoff models can be grouped into three categories: physical models, conceptual models and empirical models. (Granata et al., 2016) Empirical models treat the catchment and all interactions within it as a black box. This has the advantage of avoiding the complexities of these systems but instead has to learn or approximate the system solely based on observations. In the case of empirical models, the choice of model should be made using domain knowledge of the system. Since the problem of forecasting using radar nowcasting and numerical weather predictions can be considered a spatiotemporal modelling problem, a common category of models used are convolutional neural networks with memory neurons like LSTMs, RNNs, GRUs, etc. (Sit et al., 2020) \\
@@ -13,6 +13,7 @@ The thesis will address the questions:
 
 
 The thesis will address the questions:
+
 \begin{enumerate}
   \item How do NWP and radar nowcasts compare in terms of temporal and spatial uncertainty?
   \item How does the uncertainty of these precipitation forecasts impact the uncertainty of an urban drainage forecast?
@@ -20,5 +21,6 @@ The thesis will address the questions:
 \end{enumerate}
 
 
-
 \section{Thesis outline}
+
+

@@ -15,6 +15,7 @@
 \definecolor{green}     {rgb/cmyk}{0,0.5333,0.2078 / 0.89,0.05,1,0.17}
 \definecolor{purple}    {rgb/cmyk}{0.4745,0.1373,0.5569 / 0.67,0.96,0,0}
 
+
 \newcommand{\dtulogocolour}{white} % Colour of the DTU logo: white, black or dtured
 \newcommand{\frontpagetextcolour}{white} % front page text colour: white or black
 \colorlet{frontbackcolor}{blue} % Set the background colour of the front- and back page. Choose the colour so it matches the main colour of front page picture
@@ -74,26 +75,26 @@ purple,         fill=purple         \\%
 
 % Watermark for confidential or draft (or anything else)
 %\sffamily % set the correct font for the watermark
-\newsavebox\mybox
-\savebox\mybox{\tikz[color=grey,opacity=0.5]\node{Template};}
+% \newsavebox\mybox
+% \savebox\mybox{\tikz[color=grey,opacity=0.5]\node{Template};}
 
-\newwatermark*[
-  oddpages,
-  angle=60,
-  scale=12,
-  %fontfamily=qhv,
-  xpos=-40,
-  ypos=30,
-]{\usebox\mybox}
+% \newwatermark*[
+%   oddpages,
+%   angle=60,
+%   scale=12,
+%   %fontfamily=qhv,
+%   xpos=-40,
+%   ypos=30,
+% ]{\usebox\mybox}
 
-\newwatermark*[
-  evenpages,
-  angle=60,
-  scale=12,
-  %fontfamily=qhv,
-  xpos=-50,
-  ypos=30,
-]{\usebox\mybox}
+% \newwatermark*[
+%   evenpages,
+%   angle=60,
+%   scale=12,
+%   %fontfamily=qhv,
+%   xpos=-50,
+%   ypos=30,
+% ]{\usebox\mybox}
 
 
 % Table of contents (TOC) and numbering of headings
