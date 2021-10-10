@@ -1,15 +1,59 @@
 \chapter{Methods} \label{sec:Methods}
+The objective of the following chapters is to outline the approach used to evaluate the feasibility of the model and then to improve its performance by means of model selection, data processing and applications specific design choices. 
+
+Since Veitur ohf. in Reykjavík do no make use of any drainage flow forecast the feasibility of such a system was unknown. 
+
+To evaluate the feasibility of this forecasting task the model was into its' primary components so they could be developed and examined independantly. The independant analysis of these component also serves to quantify the uncertainty in each component of the forecast.
+
+The forecast can be divided into X main components. 
+
+Firstly, there is the precipitation forecast itself. The two methods considered for this task were the forecast made by the Icelandic Meteorological Office, which have used the HARMONIE - numerical weather prediction model since 2011 \cite{vedurstofaharmonie}, and a state-of-the-art video prediction model that has been shown excellent performance in the task of precipitation nowcasting. 
+
+Secondly, a model is needed that can translate precipitation observations into drainage flow predictions, which will be referred to as the rainfall-runoff component of the model. It's important to note that this component is not supposed to forecast multiple steps into the future but rather has the purpose of learning only the relationship between observed rainfall and overved drainage flow. The task of forecasting in this model is reserved only for the precipitation forecast. That forecast is then translated into a drainage flow forecast with model components that will treat this forecast no differently than they would an observation. The main purpose of this distinction is to preserve the quantifiability of uncertainty of model components. 
+
+The rainfall-runoff component is  
+
+
+
 
 \section{The data}
 
-The main data sources used in this paper were radar data, rain gauge data, numerical weather prediction data. 
+It's important to note several things about each of the data sources in order to understand the approaches used to quantify the uncertainty of each model. 
 
-test text
+While the radar data is technically a direct observation, it cannot be treated as a ground truth  of rainfall observations. There are several reasons why this is the case but the main one being that the relationship between what is actually being observed, the radar echo, and actual rainfall is not fixed. To estimate rainfall from radar echo the convention is to use the so-called Z-R relationship $Z=AR^b$ which is governed by the distribution of raindrop size within a given storm at a given time, which can vary greatly\cite{ZRrelationship}.  Because of the uncertain nature of this relationship the rainfall distribution given by radar observation must be treated as an estimate with a given error by itself.
 
-\section{Data Processing}
+Therefore the radar data can not be used to evaluate the performance of the NWP model by acting as a ground truth. The Radar data can however be used in the evaluation of the precipitation nowcasting model, since the objective of that model is not to forecast rainfall but radar echo. 
+
+To estimate the uncertainty of radar estimated rainfall and NWP forecasts rain-gauge data will be used, since they offer the only direct observation of rainfall available. The main drawback of this approach however is that rain-gauge observation are only observations of rainfall at a given point while NWP and radar based rainfall-estimates estimate rainfall over a given area. 
+
+\subsection{Rain-gauge data}
+Two versions of rain-gauge data from several rain-gauges were available for this project. 
+
+\begin{center}
+\begin{tabular}{ c c c }
+ cell1 & cell2 & cell3 \\ 
+ cell4 & cell5 & cell6 \\  
+ cell7 & cell8 & cell9    
+\end{tabular}
+\end{center}
+
 \section{Model}
+
+
 \subsection{Rainfall-runoff model}
 \subsection{Precipitation forecasting models}
 
 \subsection{Precipitation forecast to drainage forecast model}
+
+
+
+
+
+
+
+\section{Data Processing}
+\subsection{Radar echo data}
+
+
+
 \section{Performance requirements of different drainage applications}
