@@ -1,7 +1,7 @@
 \chapter{Introduction}
 
 \section{Urban drainage forecasts and related concepts}
-Urban drainage systems are an integral part of a city’s infrastructure and are supposed to effectively manage sewage and stormwater runoff. These systems generally fall into two categories, depending on weather they handle runoff and sewage together or separately. A failure to do both can result in flooding, property loss, increased risk of disease and can pose a risk to other infrastructure such as domestic water sources. (Stewart, 2003) There are many operational strategies for urban drainage systems that require or would benefit greatly from having a good forecast. \cite{ThorndahlRadar} Since the flow of wastewater is a relatively constant factor in the total urban drainage flow, the main cause for concern the stormwater runoff. It is therefore of great interest in the field of urban drainage systems to be able to translate precipitation forecasts into drainage flow forecasts.\\
+Urban drainage systems are an integral part of a city’s infrastructure and are supposed to effectively manage sewage and stormwater runoff. These systems generally fall into two categories, combined or separated sewers, depending on whether they handle runoff and sewage together or separately. A failure to do both can result in flooding, property loss, increased risk of disease and can pose a risk to other infrastructure such as domestic water sources \cite{RN284}. There are many operational strategies for urban drainage systems that require or would benefit greatly from having a good forecast \cite{ThorndahlRadar}. Since the flow of wastewater is a relatively constant factor in the total urban drainage flow, the main cause for concern is the stormwater runoff. It is therefore of great interest in the field of urban drainage systems to be able to translate precipitation forecasts into drainage flow forecasts.\\
 There are two primary parts to consider for a quality drainage forecast: the precipitation forecast itself, and the model that translates a precipitation forecast into a drainage flow forecast, also called a rainfall-runoff model. Precipitation forecasts considered for urban hydrological purposes are usually made with either numerical weather predictions (NWP) or radar nowcasts. The former has a considerably lower spatial and temporal resolution but a considerably larger forecast horizon than the latter. Radar nowcasts are therefore often considered the better choice for applications such as real-time control, which require at most very short-term but precise forecasts. Although, as \cite{jonasphd} notes, the better option of the two is going to depend on application in question and it’s temporal and spatial scale. \\
 Rainfall-runoff models can be grouped into three categories: physical models, conceptual models and empirical models. (Granata et al., 2016) Empirical models treat the catchment and all interactions within it as a black box. This has the advantage of avoiding the complexities of these systems but instead has to learn or approximate the system solely based on observations. In the case of empirical models, the choice of model should be made using domain knowledge of the system. Since the problem of forecasting using radar nowcasting and numerical weather predictions can be considered a spatiotemporal modelling problem, a common category of models used are convolutional neural networks with memory neurons like LSTMs, RNNs, GRUs, etc. (Sit et al., 2020) \\
 Within both weather forecasting and urban hydrology there is much interest in probabilistic forecasts. Such forecasts are often ensemble forecasts, which involves running multiple instances of a model with slightly varying parameters, initial conditions or otherwise unknown parameters. The output of probabilistic models is therefore often really a collection of outcomes which are then often aggregated into a single best estimate but there are also models which produce instead a single probability distribution of outcomes. The objective of probabilistic models is usually to give an indication of the range of possible outcomes for a given system, given the uncertain nature of some of its variables. Because of the uncertainty in weather forecasts, it should be expected that this uncertainty propagates onto urban drainage forecasts. 
@@ -20,6 +20,43 @@ The thesis will address the questions:
   \item Are there any practical applications of NWP- or radar nowcast-assisted drainage forecasts? 
   For what applications are NWP and radar nowcasts suitable given these findings?
 \end{enumerate}
+
+The thesis will address the questions:
+\begin{enumerate}
+  \item How do rain-gauges, radar observations and numerical weather predictions compare as inputs to a rainfall-runoff model?
+  \item What are the possible applications of each source of information?
+\end{enumerate}
+
+Some thoughts on the narrative:
+
+I started out with the objective of comparing NWP and radar nowcasts, knowing the pros and cons of both methods. The main reason for wanting to look into radar nowcasting was its superior temporal and spatial resolution. To fully take advantage of the radar data for this project I would have first needed to perform very extensive data processing on the radar data. Some of the main challenges in this data processing would have been in attempting to remove unwanted noise and artifacts from the data, including ground-clutter, attenuation and so-on. 
+
+% https://glossary.ametsoc.org/wiki/Z-r_relation
+% https://hess.copernicus.org/articles/13/195/2009/hess-13-195-2009.html
+Another big challenge would have been to account for the varying Marshall-Palmer relationship which describes the relationship between the radar reflectivity factor $Z (mm^6 m^{-3}))$ and rain rate $R(mm/h)$. 
+
+To overcome the problem of a varying Z-R relationship the use of radar-rain gauge merging is needed. Radar-rain gauge merging uses the observations of a rain-gauge as the 'ground-truth' which is problematic for two main reasons. Partly, because the radar scan is a volumetric scan and the rain-gauge observation is at best a point-estimate. 
+
+% https://www.researchgate.net/publication/51389289_The_effect_of_rainfall_measurement_uncertainties_on_rainfall-runoff_processes_modeling
+The other problem is that the rain-gauge isn't an infallible measuring instrument and is subject to errors random and systematic error that can cause underestimation of the rainfall volume of about 3-30\%. The main components of systematic errors in tipping bucket rain-gauges (TBR) are wind, wetting of internals walls, evaporation and splashing. Random errors like glogging and errors in the data transmition can be as high as \pm30\%. 
+
+So at best we would be correcting the flawed radar observations with other flawed observations. The reason why using radar nowcasting in this project is likely not worth it, is because I couln't make use of the increased temporal resolution since the target variable (the drainage flow) is only available in hourly averages, so any increased temporal resolution would be thrown out the window. However, I did think it was worth it to look at the use of radar data in this project for several reasons. The main reason is that it allows for experimenting with 2D rainfall observations, regardless of the high noise present. If I were to jump directly to using NWP data, I couln't make a direct comparison with the models that use rain-gauge observations. 
+
+So what I decided eventually to do was to do three main experiments, each one utilizing one of the three different data sources available for the task. 
+
+The first experiment uses a nearby rain-gauge to model the rainfall-runoff relationship. This way I can say that I am in-fact modelling rainfall-runoff even if the rainfall data underestimates the rainfall and is prone to errors. Secondly, this allowed me to get a baseline performance in the rainfall-runoff relationship before going into using the radar data. While the rain-gauge data was never going to be able to serve as a drainage forecast it does serve as an informative comparison. What this data source also did was give an indication of the performance
+
+Introducing the radar data also means introducing another factor of complexity, which is that the model has to use 2D data instead of a single 1-D value. Including more variables often causes models to over-fit. 
+
+
+
+
+
+
+
+
+The tipping bucket rain gauge (TBR) has become probably the most popular rain gauge
+
 
 
 
