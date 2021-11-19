@@ -1,0 +1,49 @@
+\chapter{Literature review} \label{sec:Literature review}
+
+% A popular choice for radar nowcasting models \cite{shi2015convolutional}
+
+
+\section{Radar}
+Two kinds of sensors are most commonly used for gathering rainfall observations, rain gauges and weather radar. Weather radar and rain-gauges have opposite strengths and weaknesses in that rain-gauges give relatively accurate estimates rainfall in one area but lack any more spatial information. Radar instead gives relatively low accuracy estimates of rainfall compared to rain-gauges but offer much better spatial information about the distribution of the rainfall. A large part of the uncertainty in the rainfall estimates of radar comes from the relationship between the radar-echo (Z) and rainfall (R) called the Z-R relationship, an exponential relationship described by the equation $Z = aR^b$ where $a$ and $b$ are adjustable parameters which can vary.  The values of a range from 200 to 600 and the value of b ranges from 1.5 to 2. The particular combination of $a = 200$ and $b = 1.6$ is called the Marshall–Palmer relation. 
+% (Citation: Citation 1: https://glossary.ametsoc.org/wiki/Radar_reflectivity_factor)
+ 
+
+Weather radar and rain-gauges can be used together with techniques called radar-rain gauge merging. The objective of these techniques is to adjust the radar data using rain-gauges to produce a more accurate distribution of rainfall than the radar alone\cite{RN301}. Because future values of rain-gauges are not known and therefore can't be used for merging, a different kind of method can be used, in which a single optimal adjustment is computed for the whole period, which \cite{LOWE2014397} found to improve the quality a model that used radar rainfall to predict rainfall-runoff. 
+
+
+Radar reflectively observations are made from volumetric scans at discrete elevation angles which it usually take between 5 to 15 minutes to perform. The data produced for each elevation angle is a regularly spaced grid in polar coordinates but the resolution after conversion to cartesian coordinates varies by distance from the radar. Typically this resolution along the length of the radar beam will be between 
+
+\subsection{Radar data processing}
+Since radar observations are an indirect measurement of rainfall there will be intrinsic uncertainties in any radar-based rainfall estimation. 
+
+Part of the uncertainty comes from the variable relationship between radar-reflectivity and part of it comes form errors or artifacts in the measurements. 
+
+% https://journals.ametsoc.org/view/journals/atot/36/7/jtech-d-18-0147.1.xml (More on this topic, like the introduction of clutter maps)
+One of the main types of artifacts seen in radar data is unwanted clutter, which is typically returned from environmental factors like the ground and large bodies of water. 
+
+
+The main sources of noise in radar data are due to ground clutter, anomalous propagation from precipitation, attenuation, variation of the vertical reflectively profile, bright band and so on \cite{RICORAMIREZ201517}.
+
+
+Quantifying radar-rainfall uncertainties in urban drainage flow modelling
+\cite{RICORAMIREZ201517} studied how the uncertainties of radar-rainfall propagate in urban drainage flow modelling. The authors implemented a probabilistic model of the uncertainties in radar rainfall...
+
+
+% Radar hydrology: rainfall estimation
+\cite{KRAJEWSKI20021387} 
+
+
+\subsection{Probabilistic runoff models}
+\cite{LOWE2014397} Made an probabilistic runoff model using radar data. 
+
+\subsection{Radar nowcasting}
+ 
+
+\section{Urban drainage applications of precipitation forecasts}
+Some common applications of rainfall data in urban drainage systems  are; Control of reservoirs or pumping stations, advance warning systems and extreme event simulations \cite{RN301}. 
+
+\cite{jonasphd} notes that publications on the topic of applications of NWP in urban drainage and wastewater purposes is limited and may be broadly categorized into four topics. Generic rain and flow forecasting, urban pluvial flood forecasting, real-time control and post-processing. 
+
+
+
+
